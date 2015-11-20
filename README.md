@@ -1,5 +1,5 @@
 # misc
-miscellaneous R related stuff
+miscellaneous R related stuff - partly rated R
 
 Here are a few wordplays that could one day make an R-some R-ticle ;-)
 I know, I should be R-rested for making such puns. After all, I'm not a famous R-tist or anything. And then I might have to spend time in prison alongside R-sonists.
