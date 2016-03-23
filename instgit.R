@@ -1,15 +1,13 @@
 
 # Quickly install a package from github without having to install devtools
-# Berry Boessenkool, December 2015, feedback welcome at berryb@gmx.de
+# Berry Boessenkool, Dec 2015 + March 16, feedback welcome at berryb@gmx.de
 
 # Tell your github users this:
 ## source("https://raw.githubusercontent.com/brry/misc/master/instgit.R")
 ## instgithub("brry/extremeStat")
 ## library(extremeStat)
 
-# works only:
-# - for pure R package structure repositories from the master branch
-# - with read-write-remove permission at getwd()
+# works only for pure R package structure repositories from the master branch
 # Installs package dependencies listed in 'Imports' and 'Depends', but ignores version requirements!
 # tested only on windows 7 with R3.2.2
 
@@ -25,6 +23,8 @@ instgithub <- function(
    cleanup=TRUE, # remove downloaded zipfile and folder with source code
    ...) # Further arguments passed to install.packages, untested so far
 {
+owd <- setwd(tempdir())
+on.exit(setwd(owd), add=TRUE)
 pkn <- strsplit(pk, "/")[[1]][2] # package name part
 # Download the zip file with the source code:
 suppressWarnings(
@@ -40,7 +40,7 @@ deps2<- read.dcf(paste0(pkn, "/DESCRIPTION"), fields="Depends")
 deps <- paste(deps,deps2, sep=",")
 deps <- gsub("\n", "", deps) # remove line breaks
 while(grepl(" ", deps)) deps <- gsub(" ", "", deps) # remove spaces
-deps <- gsub("NA", "", deps) # remove NAs for packgages not listing fields
+deps <- gsub("NA", "", deps) # remove NAs for packages not listing fields
 deps <- strsplit(deps, ",")[[1]] # split entries
 deps <- deps[deps!=""] # NA leftover
 deps <- sapply(strsplit(deps, "(", fixed=T), "[", 1) # remove version restrictions
@@ -62,6 +62,7 @@ dummy <- lapply(deps, install.packages, ...)
 message("--- instgithub will now install ", pkn, " ...")
 flush.console()
 install.packages(pkn, repos=NULL, type="source", ...)
+if(!cleanup) message("--- The downloaded zip is in: ", getwd())
 # clean up:
 if(cleanup)
   {
@@ -74,12 +75,11 @@ if(cleanup)
 # Worked fine on my computer for:
 if(FALSE){
 instgithub("talgalili/installr")
+instgithub("talgalili/installr", FALSE)
 instgithub("hadley/readxl")
 instgithub("mages/googleVis") # many dependencies!
 instgithub("twitter/AnomalyDetection")
 instgithub("yihui/knitr")
 instgithub("ramnathv/slidify")
-
-# didn't work, neither with devtools::install_github("jrnold/ggthemes"):
-instgithub("jrnold/ggthemes") # many many dependencies! # could not find function "ggproto"
+instgithub("jrnold/ggthemes") 
 }
