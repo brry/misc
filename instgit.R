@@ -27,8 +27,9 @@ owd <- setwd(tempdir())
 on.exit(setwd(owd), add=TRUE)
 pkn <- strsplit(pk, "/")[[1]][2] # package name part
 # Download the zip file with the source code:
+htt <- if(getRversion() < "3.2.2") "http" else "https"
 suppressWarnings(
-download.file(url=paste0("https://github.com/",pk,"/archive/master.zip"),
+download.file(url=paste0(htt,"://github.com/",pk,"/archive/master.zip"),
               destfile=paste0(pkn,".zip"))
 ) # suppress warnings like downloaded length 350226 != reported length 200
 # unzip and rename the folder:
