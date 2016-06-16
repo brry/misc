@@ -1,5 +1,5 @@
 # misc
-miscellaneous R related stuff - partly rated R
+miscellaneous R related stuff
 
 Links on package development
 =====
@@ -26,7 +26,7 @@ Puns
 =====
 
 Here are a few wordplays that could one day make an R-some R-ticle ;-)
-I know, I should be R-rested for making such puns. After all, I'm not a famous R-tist or anything. But then I might have to spend time in prison alongside R-sonists.
+I know, I should be R-rested for making such puns. After all, I'm not a famous R-tist or anything. But then I might have to spend time in prison alongside R-sonists. I fear a movie about that would have to be rated "R"...
 
 Anyway, drop me a line or a github issue if you have additional ideas. --> berry-b@gmx.de
 
