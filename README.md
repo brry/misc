@@ -5,6 +5,8 @@ Links on package development
 =====
 
 Links I collected regarding package development on github:
+Really good intro:
+http://stat545.com/packages02_activity.html
 
 https://support.rstudio.com/hc/en-us/articles/200486508-Building-Testing-and-Distributing-Packages # related topics
 
