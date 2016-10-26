@@ -2,14 +2,12 @@ miscellaneous R related stuff
 
 # Links on package development with Rstudio and github
 
-## Really good intros:
+### Really good intros:
 https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
 
 http://stat545.com/packages02_activity.html
 
-
-
-## further links
+### further links
 
 https://support.rstudio.com/hc/en-us/articles/200486508-Building-Testing-and-Distributing-Packages # related topics
 
@@ -23,11 +21,15 @@ http://stackoverflow.com/questions/9656016/how-to-install-development-version-of
 
 http://stackoverflow.com/questions/17521300/start-new-r-package-development-on-github
 
-## saving github password
+### saving github password
 
 http://superuser.com/questions/199507/how-do-i-ensure-git-doesnt-ask-me-for-my-github-username-and-password
 
 https://help.github.com/articles/set-up-git/#password-caching
+
+### Markdown cheatsheet
+
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 
 # Puns and Wordplays
