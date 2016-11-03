@@ -9,6 +9,8 @@ http://stat545.com/packages02_activity.html
 
 ### further links
 
+http://kbroman.org/pkg_primer/pages/github.html
+
 https://support.rstudio.com/hc/en-us/articles/200486508-Building-Testing-and-Distributing-Packages # related topics
 
 http://www.molecularecologist.com/2013/11/using-github-with-r-and-rstudio/
