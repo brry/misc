@@ -1,6 +1,12 @@
 miscellaneous R related stuff
 
-# Links on package development with Rstudio and github
+* [package development](#package-development-with-rstudio-and-github)
+* [further links](#further-links)
+* [saving github password](#saving-github-password)
+* [Markdown cheatsheet](#markdown-cheatsheet)
+* [# Puns and Wordplays](#puns-and-wordplays)
+
+### package development with Rstudio and github
 
 ### Really good intros:
 https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
@@ -37,7 +43,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 # Puns and Wordplays
 
 Here are a few wordplays that could one day make an R-some R-ticle ;-)
-I know, I should be R-rested for making such puns. After all, I'm not a famous R-tist or anything. But then I might have to spend time in prison alongside R-sonists. I fear a movie about that would have to be rated "R"...
+I know, I should be R-rested for making such puns. After all, I'm not a famous R-tist or anything. But then I'm sc-R-ed I might have to spend time in prison alongside R-sonists. I once saw a movie about how they set everything on fi-R and it was so horrible it had to be rated "R"...
 
 Anyway, drop me a line or a github issue if you have additional ideas. --> berry-b@gmx.de
 
