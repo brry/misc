@@ -34,7 +34,11 @@ plot(DEU0r, add=TRUE)
 unlink("Shapes/DEU_adm1.asc")
 if(!requireNamespace("pbapply", quietly=TRUE)) install.packages("pbapply")
 fnames <- dir("Shapes", pattern="*.shp", full.names=TRUE)
-DEU <- pbapply::pblapply(fnames, shp2raster, cellsize=0.2, column="ID_1")
+#DEU <- pbapply::pblapply(fnames, shp2raster, cellsize=0.2, column="ID_1")
+# with changing inputs:
+columns <- paste("ID", 0:4, sep="_")
+DEU <- pbapply::pblapply(seq_along(fnames), function(i) shp2raster(fnames[i], 
+                                             cellsize=0.2, column=columns[i]))
 plot(DEU[[4]])
 DEU[[5]]
 
