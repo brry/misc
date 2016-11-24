@@ -1,18 +1,13 @@
 # Convert ESRI shapefile to raster in R
 # Berry Boessenkool, Nov 2016, berry-b@gmx.de
 
-# you can load this function with
-#     source("http://raw.githubusercontent.com/brry/misc/master/shp2raster.R")
+# you can load and use this function with
+#    source("http://raw.githubusercontent.com/brry/misc/master/shp2raster.R")
+#    shp_ras <- shp2raster("ShapeName.shp", cellsize=500, column="z_value")
 
 
-# 1. Packages ----
-if(!requireNamespace("raster", quietly=TRUE)) install.packages("raster")
-if(!requireNamespace("rgdal",  quietly=TRUE)) install.packages("rgdal")
-library(raster)
-library(rgdal)
 
-
-# 2. Examples ----
+# 1. Examples ----
 # Not executed when sourcing 
 if(FALSE){
  
@@ -42,8 +37,18 @@ fnames <- dir("Shapes", pattern="*.shp", full.names=TRUE)
 DEU <- pbapply::pblapply(fnames, shp2raster, cellsize=0.2, column="ID_1")
 plot(DEU[[4]])
 DEU[[5]]
-}
-     
+
+} # end of source-ignored examples
+
+
+
+# 2. Packages ----
+if(!requireNamespace("raster", quietly=TRUE)) install.packages("raster")
+if(!requireNamespace("rgdal",  quietly=TRUE)) install.packages("rgdal")
+library(raster)
+library(rgdal)
+
+
 
 # 3. actual function ----
 
