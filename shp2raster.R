@@ -4,7 +4,7 @@
 # you can load and use this function with
 
 #    source("http://raw.githubusercontent.com/brry/misc/master/shp2raster.R")
-#    shp_ras <- shp2raster("ShapeName.shp", column="z_value")
+#    shp_ras <- shp2raster("ShapeName.shp", column="z_value", ncells=300)
 
 # shp2raster tries to find a suitable resolution automatically.
 # It gives useful warnings, errors, and interactive choices (e.g if column is missing)
@@ -57,6 +57,10 @@ DEU <- pbapply::pblapply(seq_along(fnames), function(i) shp2raster(fnames[i],
                                              cellsize=0.2, column=columns[i]))
 plot(DEU[[4]])
 DEU[[5]]
+
+# On large rasters, you might want to use gdalUtils::gdal_rasterize, see
+# comments to http://stackoverflow.com/a/14992508/1587132
+
 
 } # end of source-ignored examples
 
