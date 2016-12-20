@@ -13,6 +13,8 @@ https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
 
 http://stat545.com/packages02_activity.html
 
+https://shiring.github.io/blogging/2016/12/04/diy_your_own_blog and http://disq.us/p/1eafdft
+
 ### further links
 
 http://kbroman.org/pkg_primer/pages/github.html
