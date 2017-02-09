@@ -1,7 +1,6 @@
 miscellaneous R related stuff
 
 * [package development](#package-development-with-rstudio-and-github)
-* [further links](#further-links)
 * [saving github password](#saving-github-password)
 * [Markdown cheatsheet](#markdown-cheatsheet)
 * [# Puns and Wordplays](#puns-and-wordplays)
@@ -14,6 +13,13 @@ https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
 http://stat545.com/packages02_activity.html
 
 https://shiring.github.io/blogging/2016/12/04/diy_your_own_blog and http://disq.us/p/1eafdft
+
+### new repos
+
+* github.com, log in, on "+" in top-right select "New repository", initialize with readme and license
+* clone or download: copy link
+* Rstudio - file - new project - version control - git: paste url and create
+* open project. (Go to git tab, pull). Work. Commit. Push.
 
 ### further links
 
