@@ -16,10 +16,11 @@ https://shiring.github.io/blogging/2016/12/04/diy_your_own_blog and http://disq.
 
 ### new repos
 
-* github.com, log in, on "+" in top-right select "New repository", initialize with readme and license
+* github.com, log in, on "+" in top-right select "New repository", initialize with readme! (and license)
 * clone or download: copy link
 * Rstudio - file - new project - version control - git: paste url and create
-* open project. (Go to git tab, pull). Work. Commit. Push.
+* ~~open project. Go to git tab, pull~~. `devtools::setup()`, choose option number to Overwrite 'mhmVis.Rproj'
+* Work. Commit. Push.
 
 ### further links
 
