@@ -70,4 +70,4 @@ map <- leaflet(reg) %>% addTiles() %>%
 
 # install.packages("mapview")
 library(mapview)
-# mapshot(map, file="ElNinoMap.png") # this takes a few minutes
+mapshot(map, file="ElNinoMap.png")
