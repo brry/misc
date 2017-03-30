@@ -69,6 +69,8 @@ DEU[[5]]
 # 2. Packages ----
 if(!requireNamespace("raster", quietly=TRUE)) install.packages("raster")
 if(!requireNamespace("rgdal",  quietly=TRUE)) install.packages("rgdal")
+if(!requireNamespace("berryFunctions",  quietly=TRUE)) install.packages("berryFunctions")
+
 library(raster)
 library(rgdal)
 
@@ -79,6 +81,8 @@ library(rgdal)
 shp2raster <- function(
  shpname="",    # single file name like "coolstuff.shp". Ignored if shp is given.
  shp=NULL,      # Shapefile Object Spatial*DataFrame. If NULL, it reads shpname with rgdal::readOGR.
+ r=NULL,        # Target raster, e.g. with raster::raster(other_tif_file) 
+                # if not given, it is infered from the shapefile extend and cellsize
  ncells=99,     # Approximate number of cells in either direction to determine cellsize.
  cellsize=NA,   # Cell size in coordinate units (usually degrees or m). Computed from ncells if NA.
  ncellwarn=1000,# Warn if there will be more cells than this. To prevent e.g. accidental degrees instead of km.
@@ -90,14 +94,19 @@ shp2raster <- function(
 # if shp is missing/default, read shpname:
 if(is.null(shp)) 
  {
+ message("Reading '",shpname,"' ...")
  shp <- rgdal::readOGR(dsn=shpname, 
                        layer=basename(tools::file_path_sans_ext(shpname)),
                        verbose=verbose)
  if(is.na(ascname)) ascname <- sub(".shp", ".asc", shpname)
  } else
  if(is.na(ascname)) ascname <- paste0(deparse(substitute(shp)),".asc")
+ 
 # target raster extend and resolution:
-e <- extent(shp) 
+# if target raster is given, it is used directly
+if(is.null(r)){
+message("Computing raster extent")
+e <- raster::extent(shp) 
 if(is.na(cellsize)) cellsize <- mean(c((e@xmax-e@xmin), (e@ymax-e@ymin))/ncells)
 nx <- (e@xmax-e@xmin)/cellsize # this seems revertive from the previous line, but
 ny <- (e@ymax-e@ymin)/cellsize # is needed because ncells differ in both directions
@@ -108,11 +117,13 @@ if(max(nx,ny)>ncellwarn) cont <- readline(paste0("Raster will be large: nx=",
 cont <- tolower(cont) %in% c("y", "yes", "t", "true", "")
 if(!cont) return(list(nx=nx, ny=ny, cellsize=cellsize, extend_shp=e))
 r <- raster(ncol=nx, nrow=ny)
-extent(r) <- extent(shp)
+raster::extent(r) <- extent(shp)
 resdif <- abs((yres(r) - xres(r)) / yres(r) )
 if(resdif > 0.01) stop("Horizontal (",round(xres(r),3),") and vertical (", round(yres(r),3),
     ") resolutions are too different (diff=",round(resdif,3), ", but must be <0.010).\n",
     "  Use a smaller cell size to achieve this (currently ",round(cellsize,1),").")
+}
+ 
 # column selection
 n <- names(shp)
 if(!column %in% n) message("Column '",column, "' is not in Shapefile. Select one of\n", 
@@ -120,7 +131,8 @@ if(!column %in% n) message("Column '",column, "' is not in Shapefile. Select one
 while(!column %in% n) column <- readline(paste0("Nonexistent column '",column, 
                                          "'. Type desired name, then hit ENTER: "))
 # actually convert and write to file:
-ras <- raster::rasterize(shp, r, column, filename=ascname, proj=shp@proj4string, ...)
+newascname <- berryFunctions::newFilename(ascname)
+ras <- raster::rasterize(shp, r, field=column, filename=newascname, proj=shp@proj4string, ...)
 # return output
 ras
 }
