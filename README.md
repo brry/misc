@@ -63,7 +63,7 @@ David McArthur at UseR!2014: I think, therefore I am. We think, therefore we R.
 I'm statistically R-m'd (armed)  
 Adrian Baddeley to his dog at the computer: "What are you doing?" The dog: "Rrrrrr" (UseR!2015)  
 Pirates program in Rrrr
-
+WaRriors in the R-my of R-kansas
 
 
 Here are a few lines of famous songs that I want to turn into an R-song:
