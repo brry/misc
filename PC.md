@@ -47,7 +47,7 @@ Micro Capture from CD
 [CD-Rip-Programm (cdex)]()  
 [Audacity]()  
 [Gimp](),
-[paint.net](),
+[paint.net](https://www.chip.de/downloads/Paint.NET_13015268.html),
 [PictureIt9]()  
 
 
